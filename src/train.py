@@ -453,7 +453,7 @@ class ReplayBuffer:
 
 # Reinforcement Learning Project Agent
 class ProjectAgent:
-    def __init__(self, gamma=0.99, lr=1e-2, buffer_size=100000, batch_size=512, epsilon_start=1.0, epsilon_end=0.01, epsilon_decay=0.996,
+    def __init__(self, gamma=0.99, lr=2e-4, buffer_size=100000, batch_size=512, epsilon_start=1.0, epsilon_end=0.01, epsilon_decay=0.996,
                  grad_clip=1000.0, double_dqn=True, hidden_dim=512,
                  # PER parameters
                 per: bool = PER,

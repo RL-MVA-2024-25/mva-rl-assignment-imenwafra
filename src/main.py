@@ -18,6 +18,7 @@ def seed_everything(seed: int = 42):
     torch.backends.cudnn.benchmark = False
     torch.cuda.manual_seed_all(seed)
 
+model_path = "dqn_model.pth"
 
 if __name__ == "__main__":
     file = Path("score.txt")
@@ -25,7 +26,7 @@ if __name__ == "__main__":
         seed_everything(seed=42)
         # Initialization of the agent. Replace DummyAgent with your custom agent implementation.
         agent = ProjectAgent()
-        agent.load()
+        agent.load(model_path)
         # Evaluate agent and write score.
         score_agent: float = evaluate_HIV(agent=agent, nb_episode=5)
         score_agent_dr: float = evaluate_HIV_population(agent=agent, nb_episode=20)

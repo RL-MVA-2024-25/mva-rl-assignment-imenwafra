@@ -586,10 +586,10 @@ class ProjectAgent:
                 pickle.dump(agent_config, f)
             logging.info(f"Agent's config saved to {config_path}")
 
-    def load(self, model_path) -> None:
+    def load(self) -> None:
         # Chargement des poids du modèle et de l'état de l'optimiseur
-        checkpoint_data = torch.load(model_path, weights_only=False)
-        config_file_path = model_path.replace('.pth', '_config.pkl')
+        checkpoint_data = torch.load(model_path = "dqn_model.pth", weights_only=False)
+        config_file_path = "dqn_model_config.pkl"
 
         with open(config_file_path, "rb") as file:
             saved_config = pickle.load(file)
@@ -630,7 +630,7 @@ class ProjectAgent:
             self.memory = ReplayBuffer(self.buffer_size, self.batch_size)
             self.memory.buffer = deque(saved_config["buffer"], maxlen=self.buffer_size)
 
-        logging.info(f"Agent state restored from {model_path}")
+        logging.info(f"Agent state restored from {"dqn_model.pth"}")
         logging.info(f"Configuration restored from {config_file_path}")
 
     def load_specified(self, checkpoint_path):

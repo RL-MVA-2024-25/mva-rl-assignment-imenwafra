@@ -587,8 +587,9 @@ class ProjectAgent:
             logging.info(f"Agent's config saved to {config_path}")
 
     def load(self) -> None:
+        model_path = "dqn_model.pth"
         # Chargement des poids du modèle et de l'état de l'optimiseur
-        checkpoint_data = torch.load(model_path = "dqn_model.pth", weights_only=False)
+        checkpoint_data = torch.load(model_path, weights_only=False)
         config_file_path = "dqn_model_config.pkl"
 
         with open(config_file_path, "rb") as file:
@@ -630,7 +631,7 @@ class ProjectAgent:
             self.memory = ReplayBuffer(self.buffer_size, self.batch_size)
             self.memory.buffer = deque(saved_config["buffer"], maxlen=self.buffer_size)
 
-        logging.info(f"Agent state restored from {"dqn_model.pth"}")
+        logging.info("Agent state restored from dqn_model.pth")
         logging.info(f"Configuration restored from {config_file_path}")
 
     def load_specified(self, checkpoint_path):

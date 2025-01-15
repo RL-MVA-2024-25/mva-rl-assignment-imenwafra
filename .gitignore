@@ -126,4 +126,4 @@ dmypy.json
 .pyre/
 
 # Score file for grading
-score.txt
+#score.txt
